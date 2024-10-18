@@ -1,0 +1,228 @@
+
+body{
+    overflow-x: hidden;
+}
+.our_header{
+    margin:40px 0px 40px 0px ;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    width: 300px; /* Adjust as needed */
+    height: auto;
+}
+
+
+.tub-img{
+    width: 200px;
+
+    z-index: 1;
+    transition: all .8s ;
+    &:hover{
+        width: 350px;
+        animation: float 2s infinite ease-in-out;
+    }
+}
+.img-hover{
+    width: 350px;
+        animation: float 2s infinite ease-in-out;
+}
+.circle{
+    border: 2px solid black;
+    width: 0;
+    height: 0;
+    font-size: 0px;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 69px;
+    left: 181px;
+
+    transition: all .5s ;
+}
+.circle-hover{
+    border: 2px solid black;
+    width: 100%;
+    height: 300px;
+    font-size: 20px;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 69px;
+    left: 181px;
+
+}
+
+.hr{
+    background-color: black;
+    height: 1px;
+    width: 4rem;
+    border: 2px solid black;
+}
+/* Add spacing between each image */
+.img-box {
+    flex: 0 0 300px; /* Set the width of each image box */
+    position: relative;
+    margin: 0 15px; /* Add space between images */
+    overflow: visible; /* Make sure expanding circle is not cut */
+}
+
+/* Ensure the expanding circle stays within the container */
+.circle {
+    position: absolute;
+    top: 80%;
+    right: 10px;
+    width: 0;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+    font-size: 0;
+    overflow: hidden;
+    /* Ensure circle appears above other elements */
+}
+
+.circle-hover {
+    opacity: 1;
+    width: 250px;
+    height: 250px;
+    font-size: 12px;
+}
+
+/* Ensure hover does not affect other images */
+.tub-img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+/* Prevent other images from shifting when hovering */
+.img-box:hover .tub-img {
+    transform: none; /* Remove image resizing/shifting */
+}
+
+/* Style for the slider itself */
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: auto; /* Let it auto adjust based on the number of images */
+}
+.slider-container{
+   
+    position: relative;
+    margin-top: 40px;
+}
+.product-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+/* Circular floating slider buttons */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+.prev-btn {
+    left: 0px; /* Start of the slider */
+}
+
+.next-btn {
+    right: 10px; /* End of the slider */
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.our-end{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* OUR STORE */
+.our-store{
+    position: relative;
+    height: 95vh;
+    background-image: url('Assets/website-15.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgb(206, 203, 199);
+}
+
+.view-2{
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+}
+.our-stry-text{
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 500px;
+    z-index: 0;
+    background: #000;
+    min-height: 500px;
+}
+.store-text{
+    color: aliceblue;
+    rotate: 270deg;
+}
+
+.small-circle{
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+.view-3{
+    position: absolute;
+    right: 150px;
+    bottom: 0;
+    z-index: 3;
+}
