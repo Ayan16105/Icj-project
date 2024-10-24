@@ -34,35 +34,8 @@ body{
     width: 350px;
         animation: float 2s infinite ease-in-out;
 }
-.circle{
-    border: 2px solid black;
-    width: 0;
-    height: 0;
-    font-size: 0px;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 69px;
-    left: 181px;
 
-    transition: all .5s ;
-}
-.circle-hover{
-    border: 2px solid black;
-    width: 100%;
-    height: 300px;
-    font-size: 20px;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 69px;
-    left: 181px;
 
-}
 
 .hr{
     background-color: black;
@@ -73,16 +46,20 @@ body{
 /* Add spacing between each image */
 .img-box {
     flex: 0 0 300px; /* Set the width of each image box */
-    position: relative;
-    margin: 0 15px; /* Add space between images */
-    overflow: visible; /* Make sure expanding circle is not cut */
+   
+    position: relative;  /* Allows absolute positioning of .circle */
+    display: inline-block;
+    margin: 50px;  /* Space between image boxes */
+    width: 300px;
+    height: 100px; /* Fixed height */
+    overflow: visible;  /* Allow circle to expand beyond the img-box */
 }
 
 /* Ensure the expanding circle stays within the container */
 .circle {
     position: absolute;
     top: 80%;
-    right: 10px;
+    left: 200px;
     width: 0;
     height: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -91,18 +68,23 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: all 0.4s ease;
+    opacity: 0; /* Initially hidden */
+    transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease, font-size 0.5s ease;
     font-size: 0;
     overflow: hidden;
-    /* Ensure circle appears above other elements */
+    z-index: 0;
+    pointer-events: none; /* Prevent mouse events on the circle itself */
+}
+.pos1{
+    top: 250px;
 }
 
-.circle-hover {
-    opacity: 1;
-    width: 250px;
-    height: 250px;
-    font-size: 12px;
+.img-box:hover .circle {
+    opacity: 1; /* Show circle on hover */
+    width: 250px; /* Expand width */
+    height: 250px; /* Expand height */
+    font-size: 12px; /* Increase font size */
+    
 }
 
 /* Ensure hover does not affect other images */
@@ -118,56 +100,47 @@ body{
 }
 
 /* Style for the slider itself */
+* {
+    box-sizing: border-box;
+}
+
+.slider-container {
+    width: 100%;
+    
+    margin: 20px auto  ;
+    position: relative;
+}
+
 .slider {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: auto; /* Let it auto adjust based on the number of images */
+    transition: transform 0.4s ease-in-out;
 }
-.slider-container{
-   
-    position: relative;
-    margin-top: 40px;
-}
-.product-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+.slider img {
+    width: 100%;
     
+    margin-right: 20px;
 }
-/* Circular floating slider buttons */
+
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 50%;
     cursor: pointer;
-    font-size: 24px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    z-index: 10;
+    z-index: 100;
 }
+
 .prev-btn {
-    left: 0px; /* Start of the slider */
+    left: 0;
 }
 
 .next-btn {
-    right: 10px; /* End of the slider */
+    right: 0;
 }
-
-.prev-btn:hover, .next-btn:hover {
-    background-color: white;
-    color: black;
-}
-
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -229,3 +202,5 @@ body{
     bottom: 0;
     z-index: 3;
 }
+
+/* HOME SLIDER */
