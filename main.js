@@ -107,52 +107,57 @@ animateCounter(0, 25, counterElement, 2000);
 document.addEventListener("DOMContentLoaded", function() {
     const slider = document.querySelector(".custom-slider-wrapper");
     const images = slider.querySelectorAll(".custom-slider-image");
-    const centerImages = [
-        "Assets/1 ice cream.png",
+
+    // Array of alternate images, one for each original image
+    const alternateCenterImages = [
+        "Assets/1 ice cream.png", // Alternate for first image
         "Assets/2ice cream.png",
-        "Assets/3 ice cream.png"
-    ]; // Array of images for the center position
+        "Assets/1 ice cream.png", // Alternate for second image
+        "Assets/3 ice cream.png",
+        "Assets/4 ice cream.png"  // Alternate for third image, and so on
+    ];
+
     let currentIndex = Math.floor(images.length / 2); // Start with center image
-    let centerImageIndex = 0; // Track which center image to display
     let translateX = 0; // Slide position
 
     function updateCenterImage() {
         images.forEach((img, index) => {
-            img.classList.remove("custom-center-image");
-
-            // Only change the image at the center position
+            // Check if the image is at the center position
             if (index === currentIndex) {
+                // Store original source if not already stored
+                if (!img.dataset.originalSrc) {
+                    img.dataset.originalSrc = img.src;
+                }
+                // Set the alternate center image specific to this image
+                img.src = alternateCenterImages[index];
                 img.classList.add("custom-center-image");
-                img.dataset.originalSrc = img.src; // Store original src
-                img.src = centerImages[centerImageIndex]; // Set new center image
-            } else if (img.dataset.originalSrc) {
-                img.src = img.dataset.originalSrc; // Revert to original when leaving center
+            } else {
+                // Revert to the original source when moving out of center
+                if (img.dataset.originalSrc) {
+                    img.src = img.dataset.originalSrc;
+                }
+                img.classList.remove("custom-center-image");
             }
         });
-
-        // Cycle through center images
-        centerImageIndex = (centerImageIndex + 1) % centerImages.length;
     }
 
-   // Move slider to the right, stop at last image
-function moveSliderRight() {
-    if (currentIndex < images.length - 1) { // Check if not at the last image
-        translateX -= images[0].offsetWidth;
-        slider.style.transform = `translateX(${translateX}px)`;
-        currentIndex++;
-        updateCenterImage();
+    function moveSliderRight() {
+        if (currentIndex < images.length - 1) {
+            translateX -= images[0].offsetWidth;
+            slider.style.transform = `translateX(${translateX}px)`;
+            currentIndex++;
+            updateCenterImage();
+        }
     }
-}
 
-// Move slider to the left, stop at first image
-function moveSliderLeft() {
-    if (currentIndex > 0) { // Check if not at the first image
-        translateX += images[0].offsetWidth;
-        slider.style.transform = `translateX(${translateX}px)`;
-        currentIndex--;
-        updateCenterImage();
+    function moveSliderLeft() {
+        if (currentIndex > 0) {
+            translateX += images[0].offsetWidth;
+            slider.style.transform = `translateX(${translateX}px)`;
+            currentIndex--;
+            updateCenterImage();
+        }
     }
-}
 
     document.querySelector(".custom-next-btn").addEventListener("click", moveSliderRight);
     document.querySelector(".custom-prev-btn").addEventListener("click", moveSliderLeft);
