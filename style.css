@@ -1,13 +1,26 @@
-.footer a{
+
+a{
+    text-decoration: none !important;
+
+  }
+  
+
+.footer a {
     color: white;
     text-decoration: none;
 }
-body{
-    overflow-x: hidden;
+
+
+body {
+    font-family: Montserrat, sans-serif; /* Corrected font */
+    overflow-x: hidden; /* Moved here */
+    padding-top: 70px;
 }
-.our_header{
-    margin:40px 0px 40px 0px ;
+
+.our_header {
+    margin: 40px 0;
 }
+
 .image-container {
     position: relative;
     display: inline-block;
@@ -19,44 +32,43 @@ body{
     height: auto;
 }
 
-
-.tub-img{
+.tub-img {
     width: 200px;
-
     z-index: 1;
-    transition: all .8s ;
-    &:hover{
-        width: 350px;
-        animation: float 2s infinite ease-in-out;
-    }
+    transition: all 0.8s;
 }
-.img-hover{
+
+.tub-img:hover {
+    width: 350px; /* Adjust size on hover */
+    animation: float 2s infinite ease-in-out;
+}
+
+.img-hover {
     width: 350px;
-        animation: float 2s infinite ease-in-out;
+    animation: float 2s infinite ease-in-out;
 }
 
-
-
-.hr{
+.hr {
     background-color: black;
     height: 1px;
     width: 4rem;
     border: 2px solid black;
 }
+
 /* Add spacing between each image */
 .img-box {
     flex: 0 0 300px; /* Set the width of each image box */
-   
-    position: relative;  /* Allows absolute positioning of .circle */
+    position: relative; /* Allows absolute positioning of .circle */
     display: inline-block;
-    margin: 50px;  /* Space between image boxes */
+    margin: 50px; /* Space between image boxes */
     width: 300px;
     height: 100px; /* Fixed height */
-    overflow: visible;  /* Allow circle to expand beyond the img-box */
+    overflow: visible; /* Allow circle to expand beyond the img-box */
 }
 
 /* Ensure the expanding circle stays within the container */
 .circle {
+    text-align: center;
     position: absolute;
     top: 80%;
     left: 200px;
@@ -75,29 +87,32 @@ body{
     z-index: 0;
     pointer-events: none; /* Prevent mouse events on the circle itself */
 }
-.pos1{
+
+.pos1 {
     top: 250px;
+}
+
+.pos2 {
+    top: 190px;
+    left: 50%;
 }
 
 .img-box:hover .circle {
     opacity: 1; /* Show circle on hover */
-    width: 250px; /* Expand width */
-    height: 250px; /* Expand height */
+    width: 220px; /* Expand width */
+    height: 220px; /* Expand height */
     font-size: 12px; /* Increase font size */
-    
 }
 
 /* Ensure hover does not affect other images */
 .tub-img {
     width: 100%;
     height: auto;
-    transition: transform 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 /* Prevent other images from shifting when hovering */
-.img-box:hover .tub-img {
-    transform: none; /* Remove image resizing/shifting */
-}
+
 
 /* Style for the slider itself */
 * {
@@ -106,8 +121,7 @@ body{
 
 .slider-container {
     width: 100%;
-    
-    margin: 20px auto  ;
+    margin: 20px auto;
     position: relative;
 }
 
@@ -118,13 +132,15 @@ body{
 
 .slider img {
     width: 100%;
-    
     margin-right: 20px;
 }
 
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -132,15 +148,23 @@ body{
     padding: 10px;
     cursor: pointer;
     z-index: 100;
+    transition: all 0.2s ease-in-out;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: aliceblue;
+    color: #000;
 }
 
 .prev-btn {
-    left: 0;
+    left: 20px;
 }
 
 .next-btn {
-    right: 0;
+    right: 20px;
 }
+
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -153,17 +177,18 @@ body{
     }
 }
 
-
-.our-end{
+.our-end {
     height: 100px;
+    margin-top: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 /* OUR STORE */
-.our-store{
+.our-store {
     position: relative;
+    margin-top: 80px;
     height: 95vh;
     background-image: url('Assets/website-15.png');
     background-repeat: no-repeat;
@@ -171,12 +196,13 @@ body{
     background-color: rgb(206, 203, 199);
 }
 
-.view-2{
+.view-2 {
     position: absolute;
     right: 0px;
     z-index: 1;
 }
-.our-stry-text{
+
+.our-stry-text {
     position: absolute;
     left: 0;
     bottom: 0px;
@@ -185,22 +211,141 @@ body{
     background: #000;
     min-height: 500px;
 }
-.store-text{
+
+.store-text {
     color: aliceblue;
-    rotate: 270deg;
+    transform: rotate(270deg); /* Use transform instead of rotate */
 }
 
-.small-circle{
+.small-circle {
     height: 3px;
     width: 3px;
     border-radius: 50%;
     background-color: aliceblue;
 }
-.view-3{
+
+.view-3 {
     position: absolute;
     right: 150px;
     bottom: 0;
     z-index: 3;
 }
+.flavor1{
+    background-color: rgba(137, 43, 226, 0.425);
+    color: #000;
+}
+.flavor2{
+     background-color:#F5E6CC ;
+     color: #000;
+}
+.flavor3{
+     background-color: #93C572;
+}
+.flavor4{
+     background-color: #D2B48C;
+     color: #000;
+}
+.flavor5{
+     background-color: #B08057 ;
+     color: #000;
+}
+.flavor6{
+     background-color: #FFB6C1;
+     color: #000;
+}
+.flavor7{
+    background-color: #4B3D3A;
+    
+}
+.flavor8{
+    background-color: #7B4B3A;
+}
+.flavor9{
+    background-color: #F28D8D;
+    color: #000;
+}
+.flavor10{
+    background-color: #F5C35C;
+    color: #000;
+}
 
-/* HOME SLIDER */
+.fnt{
+    font-family: SilkSerifB;
+    font-weight: 500;
+}
+.custHero2{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+
+}
+@media (max-width: 330px) {
+    #counter-section h1 {
+        font-size: 1.2rem;
+    }
+    #counter-section p {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    #counter {
+        font-size: 80px;
+    }
+}
+/* Container for the slider */
+.custom-slider-container {
+    margin-top: -180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Wrapper for images */
+.custom-slider-wrapper {
+    display: flex;
+    overflow: visible; /* Allow overflow for the scaling effect */
+    justify-content: center;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+}
+
+/* Basic image styling */
+.custom-slider-wrapper .custom-slider-image {
+    height: 300px;
+    width: 300px;
+    transition: transform 0.4s ease-in-out;
+    object-fit: cover;
+}
+
+/* Center image scaling effect */
+.custom-slider-wrapper .custom-center-image {
+    transform: scale(2);
+    transform-origin: bottom;
+    z-index: 1; /* Bring the center image to the front */
+}
+
+/* Buttons container */
+.custom-slider-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Button styling */
+.custom-slider-buttons button {
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.custom-slider-buttons button:hover {
+    background-color: #555;
+}
